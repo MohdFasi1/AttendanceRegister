@@ -1,6 +1,6 @@
 import { Button, Dialog, DialogBody, DialogFooter, DialogHeader, Textarea } from '@material-tailwind/react';
 import React, { useState } from 'react';
-import vector from '../assets/vector.png'
+import vectorImage from '../assets/vector.png'
 const CircularProgress = ({ progress, max, shift, loginData, refresh, setRefresh }) => {
   const [open, setOpen] = useState(false);
   const [notes,setNotes] = useState("");
@@ -62,7 +62,7 @@ const CircularProgress = ({ progress, max, shift, loginData, refresh, setRefresh
 
         <div className='absolute  w-48 h-48 rounded-full p-6 bg-primary'>
           <Button onClick={handleOpen} color='white' className='w-full h-full rounded-full bg-white shadow-inner shadow-t1 flex flex-col gap-2 justify-center items-center' disabled={shift?.message === "Marked"}>
-            <img src={vector} alt="" />
+            <img src={vectorImage} alt="" />
             <p className='font-poppins text-sm'>{shift?.message}</p>
           </Button>
         </div>
