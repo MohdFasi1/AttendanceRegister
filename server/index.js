@@ -31,19 +31,6 @@ app.use(cors({
 connectDB()
 
 
-if (process.env.NODE_ENV === 'production') {
-  // Serve static files from the React app
-  app.use(express.static(path.join(__dirname, '../client/build')));
-
-  // Handle React routing, return all requests to the React app
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-  });
-}
-
-app.use((req, res) => {
-  res.status(404).send('Not Found');
-});
 
 // runs every day at 23:59 (11:59 PM) and marks absent to remaining employees
 cron.schedule('59 23 * * *', async () => {
