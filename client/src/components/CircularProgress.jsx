@@ -1,6 +1,6 @@
 import { Button, Dialog, DialogBody, DialogFooter, DialogHeader, Textarea } from '@material-tailwind/react';
 import React, { useState } from 'react';
-import vectorImage from '../assets/vector.png'
+import vectorImage from '../assets/Vector.png'
 const CircularProgress = ({ progress, max, shift, loginData, refresh, setRefresh }) => {
   const [open, setOpen] = useState(false);
   const [notes,setNotes] = useState("");
