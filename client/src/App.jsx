@@ -15,8 +15,7 @@ import ManageEmployees from './components/ManageEmployees.jsx';
 import Profile from './components/Profile.jsx';
 import EmployeeDetails from './components/EmployeeDetails.jsx';
 import Notification from './components/Notification.jsx';
-
-
+import { Spinner } from '@material-tailwind/react';
 
 
 
@@ -31,6 +30,8 @@ const CheckUser = ({ isLoggedIn, loginData, setLoginData }) => {
       return <EmpLayout loginData={loginData}setLoginData={setLoginData} />
     }
 }
+
+
 export default function App() {
   
   const [loginData, setLoginData] = useState(null); // Start as null to differentiate between loading and no data
@@ -61,7 +62,7 @@ export default function App() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; 
+    return <Spinner color='indigo'/>; 
   }
 
   const isLoggedIn = Boolean(loginData);

@@ -1,5 +1,4 @@
 import express from "express"
-import path from "path";
 import http from 'http'; 
 import cron from 'node-cron';
 import { Emp } from "./models/emp.js"
@@ -30,10 +29,6 @@ app.use(cors({
 ));
 connectDB()
 
-io.on('connection', (socket) => {
-  console.log('a user connected');
-  // Handle socket events here
-});
 
 // runs every day at 23:59 (11:59 PM) and marks absent to remaining employees
 cron.schedule('59 23 * * *', async () => {
@@ -141,7 +136,7 @@ app.post('/api/punch', async (req, res) => {
     io.emit("notify-admin",notify)
     res.json({ data, message: `Data Submitted Successfully` });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.json({ message: `There was an error while submiting data, Please Try again` })
   }
 })
@@ -193,7 +188,6 @@ app.get('/api/today', async (req, res) => {
         { time_out: null, date: { $lt: today } }  // Check for open shifts from previous days
       ]
     });
-    console.log(data)
     const markedShift = await Emp.findOne({
       id: id,
       date: today,
@@ -372,5 +366,5 @@ app.get('/api/employee-details',async (req,res)=>{
 const port = process.env.PORT
 
 server.listen(port, () => {
-  console.log('Server running on port 3000');
+  console.log('Server running on port:', port);
 });

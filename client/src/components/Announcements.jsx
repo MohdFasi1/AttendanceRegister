@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import socket from './middlewares/socket'
-import { Button, Dialog, DialogBody, DialogFooter, DialogHeader, Textarea, Typography } from '@material-tailwind/react';
+import { Button, Dialog, DialogBody, DialogFooter, DialogHeader, Textarea } from '@material-tailwind/react';
 const Announcements = ({ loginData }) => {
   const [announcements, setAnnouncements] = useState([])
   const [message,setMessage] = useState("");
@@ -32,7 +32,6 @@ const Announcements = ({ loginData }) => {
           body: JSON.stringify({message,postedBy:loginData.name}),
       });
       const res = await a.json();
-      console.log(res.message)
       setOpen(false)
   } catch (err) {
       console.error(err)

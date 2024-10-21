@@ -14,7 +14,6 @@ const EmployeeDetails = ({ loginData }) => {
   const getData = async () => {
     let a = await fetch(`${import.meta.env.VITE_API_URL}/api/employee-details?id=${id}`)
     let res = await a.json();
-    console.log(res)
     setData(res)
   }
   useEffect(() => {

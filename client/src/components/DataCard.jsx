@@ -41,7 +41,6 @@ const DataCard = ({ title, progress, max,children }) => {
                         <div className='w-full h-full flex justify-center items-center rounded-full p-4 bg-white'>
                             <h1 className='w-full f-full text-3xl flex justify-center items-attendance text-secondary'>{progress}/{max}</h1>
                         </div>
-
                     </div>
                     {children}
                 </div>

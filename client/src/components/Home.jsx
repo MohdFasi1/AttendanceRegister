@@ -41,14 +41,12 @@ function handleTotalHours(data, setProg) {
     setProg(Math.floor(timeDiff / (1000 * 60)));
     let hours = Math.floor(timeDiff / (1000 * 60 * 60)).toString().padStart(2, '0');
     const mins = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-    console.log(`${hours}:${mins}`)
     return `${hours}:${mins}`
 }
 let interId;
 function startInterval(data, setTotalHours, setProg) {
     setTotalHours(handleTotalHours(data, setProg))
     if (!interId) {
-        console.log("interval")
         interId = setInterval(() => {
             setTotalHours(handleTotalHours(data, setProg))
         }, 60000);
@@ -79,18 +77,15 @@ const Home = ({ loginData }) => {
     }, [timer]);
   
     useEffect(() => {
-      console.log("home refreshed by cp")
       setTimeout(() => {
       getToday();
       }, 300);
     }, [refresh]);
   
     const getToday = async () => {
-      console.log("gettoday running")
       try {
         let api = await fetch(`${import.meta.env.VITE_API_URL}/api/today?id=${loginData?._id}`);
         let res = await api.json();
-        console.log("getdata received",res);
         setShift(res);
         if (res.data && !res.data?.time_out) {
           startInterval(res.data, setTotalHours, setProg);

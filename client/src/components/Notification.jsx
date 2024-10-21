@@ -13,7 +13,6 @@ const Notification = ({id}) => {
         socket.on(id, (message) => {
             setNotifications(prev => [message, ...prev]);  // Add new announcement to the list
         });
-        console.log(notifications)
         return () => {
           socket.off(id);
         };

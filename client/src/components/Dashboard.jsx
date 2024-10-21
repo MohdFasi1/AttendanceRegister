@@ -1,4 +1,3 @@
-import { Card, CardBody, CardHeader } from '@material-tailwind/react'
 import React, { useEffect, useState } from 'react'
 import DataCard from './DataCard'
 import getDashBoardData from './middlewares/GetDashboardData'
@@ -10,7 +9,6 @@ const Dashboard = () => {
   const [empData, setEmpData] = useState([]);
   useEffect(() => {
     getDashBoardData(setEmpData,setAttendanceToday);
-    console.log(empData,attendanceToday)
   }, [])
 
   return (

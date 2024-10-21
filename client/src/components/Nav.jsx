@@ -5,7 +5,6 @@ import { Link, useLocation } from 'react-router-dom'
 const Nav = () => {
     const location = useLocation();
     const [selected,setSelected] = useState(location.pathname)
-    console.log(location.pathname)
     return (
         <div className='bg-white w-1/ hidden lg:block'>
             <div className='flex flex-col gap-1 h-full'>

@@ -6,14 +6,12 @@ const AttendanceSheet = ({loginData}) => {
     const [month, setMonth] = useState(0);
     useEffect(()=>{
         getDataSheet()
-        console.log(dataSheet)
     },[])
     const getDataSheet = async () => {
         try {
             let api = await fetch(`${import.meta.env.VITE_API_URL}/api/attendance?id=${loginData._id}&month=${month}`);
             let res = await api.json();
             setDataSheet(res.data);
-            console.log(dataSheet)
         } catch (err) {
             console.error(err)
         }

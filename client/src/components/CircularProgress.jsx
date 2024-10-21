@@ -3,14 +3,13 @@ import React, { useState } from 'react';
 import vectorImage from '../assets/Vector.png'
 const CircularProgress = ({ progress, max, shift, loginData, refresh, setRefresh }) => {
   const [open, setOpen] = useState(false);
-  const [notes,setNotes] = useState("");
-  const handleOpen = ()=>setOpen(!open);
+  const [notes, setNotes] = useState("");
+  const handleOpen = () => setOpen(!open);
   const radius = 100; // Radius of the outer circle
   const circumference = 2 * Math.PI * radius; // Circumference of the circle
   const offset = circumference - (progress / max) * circumference;
 
   const punchIn = async () => {
-    console.log("punchin clicked")
     try {
       let api = await fetch(`${import.meta.env.VITE_API_URL}/api/punch`, {
         method: shift?.message === "Punch Out" ? 'PUT' : 'POST',
@@ -25,7 +24,6 @@ const CircularProgress = ({ progress, max, shift, loginData, refresh, setRefresh
         })
       })
       let res = await api.json();
-      console.log("data received",res)
       setRefresh(!refresh)
       handleOpen()
     } catch (err) {
@@ -67,32 +65,32 @@ const CircularProgress = ({ progress, max, shift, loginData, refresh, setRefresh
           </Button>
         </div>
         <Dialog open={open} handler={() => setOpen(!open)}>
-        <DialogHeader className='text-secondary bg-primary font-poppins'>{shift?.message || " "}</DialogHeader>
-        <DialogBody>
-          <h1 className=''>you are about to {shift?.message}</h1>
-          {shift?.message === "Punch In" ?<p>Click Confirm</p>:
-          <div className='flex- flex-col'>
-            <label htmlFor="notes">Add Notes</label>
-            <Textarea name="notes" id="notes" value={notes} onChange={(e)=>setNotes(e.target.value)} />
-          </div> }
-        </DialogBody>
-        <DialogFooter>
-          <Button
-            variant="text"
-            color="red"
-            onClick={handleOpen}
-            className="mr-1"
-          >
-            <span>Cancel</span>
-          </Button>
-          <button variant="gradient" className='bg-secondary px-4 py-2 shadow-inner text-white rounded'
-            onClick={punchIn}>
-            <span>Confirm</span>
-          </button>
-        </DialogFooter>
-      </Dialog>
+          <DialogHeader className='text-secondary bg-primary font-poppins'>{shift?.message || " "}</DialogHeader>
+          <DialogBody>
+            <h1 className=''>you are about to {shift?.message}</h1>
+            {shift?.message === "Punch In" ? <p>Click Confirm</p> :
+              <div className='flex- flex-col'>
+                <label htmlFor="notes">Add Notes</label>
+                <Textarea name="notes" id="notes" value={notes} onChange={(e) => setNotes(e.target.value)} />
+              </div>}
+          </DialogBody>
+          <DialogFooter>
+            <Button
+              variant="text"
+              color="red"
+              onClick={handleOpen}
+              className="mr-1"
+            >
+              <span>Cancel</span>
+            </Button>
+            <button variant="gradient" className='bg-secondary px-4 py-2 shadow-inner text-white rounded'
+              onClick={punchIn}>
+              <span>Confirm</span>
+            </button>
+          </DialogFooter>
+        </Dialog>
       </div>
-      
+
     </div>
   );
 };
