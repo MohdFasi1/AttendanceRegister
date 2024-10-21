@@ -4,6 +4,29 @@
 Employee Attendance Register is a full-stack web application designed to simplify the management and tracking of employee attendance. It allows administrators to easily add employees, monitor attendance records, and ensure the security of employee data.
 
 
+## Features
+
+- Attendance Tracking
+- Employee Management
+- Secure Passwords
+- Real-time Updates
+
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file in client
+
+`VITE_API_URL`
+
+And server
+
+`MONGODB_CONNECT_URI`
+
+`CLIENT_URL`
+
+`PORT`
+
+
 ## Installation
 
 Clone the repository:
@@ -56,29 +79,6 @@ cd ../client
 npm run dev
 
 ```
-## Environment Variables
-
-To run this project, you will need to add the following environment variables to your .env file in client
-
-`VITE_API_URL`
-
-And server
-
-`MONGODB_CONNECT_URI`
-
-`CLIENT_URL`
-
-`PORT`
-
-
-## Features
-
-- Attendance Tracking
-- Employee Management
-- Secure Passwords
-- Real-time Updates
-
-
 ## Technologies Used
 
 **Frontend:** React, Vite, TailwindCSS
