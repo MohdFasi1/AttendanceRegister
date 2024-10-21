@@ -15,7 +15,7 @@ const LoginPage = ({ setLoginData }) => {
     } = useForm()
     const onSubmit = async (data) => {
         try {
-            const a = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
+            const a = await fetch(`${import.meta.env.VITE__API_URL}/api/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -3,7 +3,7 @@ import socket from './middlewares/socket'
 const Notification = ({id}) => {
     const [notifications, setNotifications] = useState([])
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/api/notify?id=${id}`)
+        fetch(`${import.meta.env.VITE_API_URL}/api/notify?id=${id}`)
           .then(res => res.json())
           .then(data => {
             setNotifications(data);

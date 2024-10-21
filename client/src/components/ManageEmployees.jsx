@@ -12,7 +12,7 @@ const ManageEmployees = ({ loginData }) => {
         getEmployees();
     }, [message])
     const getEmployees = async () => {
-        let api = await fetch(`${process.env.REACT_APP_API_URL}/api/employees`);
+        let api = await fetch(`${import.meta.env.VITE_API_URL}/api/employees`);
         let res = await api.json();
         setEmployees(res);
     };

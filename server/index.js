@@ -65,7 +65,7 @@ cron.schedule('59 23 * * *', async () => {
         io.emit(employee._id,notify);
       }
       else{
-        if(attendance.status === "Incomplete" || attendance.status === "Ongoing"){
+        if(attendance.status === "Incomplete" ){
           let notify = new Notification({
             id: employee._id,
             message : `you were marked absent for date:${today.toLocaleString()} `
@@ -188,13 +188,12 @@ app.get('/api/today', async (req, res) => {
     // Query for the employee's current shift (open shift where time_out is not set)
     const data = await Emp.findOne({
       id: id,
-      status :{$ne : "Absent"},
       $or: [
         { date: { $gte: today } },  // Check if the date is today or later
         { time_out: null, date: { $lt: today } }  // Check for open shifts from previous days
       ]
     });
-    console.log(today)
+    console.log(data)
     const markedShift = await Emp.findOne({
       id: id,
       date: today,

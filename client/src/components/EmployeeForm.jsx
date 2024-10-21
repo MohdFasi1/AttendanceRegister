@@ -44,7 +44,7 @@ const EmployeeForm = ({open,handleOpen, loginData, method,message, setMessage, d
                     address,
                     isAdmin
                 }
-                let api = await fetch(`${process.env.REACT_APP_API_URL}/api/employee-details`, {
+                let api = await fetch(`${import.meta.env.VITE_API_URL}/api/employee-details`, {
                     method: method,
                     headers: { 'Content-Type': 'application/json' },
                     body: method == "POST" ? JSON.stringify({...emp,password}) : JSON.stringify({_id:data._id,...emp})

@@ -88,7 +88,7 @@ const Home = ({ loginData }) => {
     const getToday = async () => {
       console.log("gettoday running")
       try {
-        let api = await fetch(`${process.env.REACT_APP_API_URL}/api/today?id=${loginData?._id}`);
+        let api = await fetch(`${import.meta.env.VITE_API_URL}/api/today?id=${loginData?._id}`);
         let res = await api.json();
         console.log("getdata received",res);
         setShift(res);

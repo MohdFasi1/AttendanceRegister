@@ -12,7 +12,7 @@ const CircularProgress = ({ progress, max, shift, loginData, refresh, setRefresh
   const punchIn = async () => {
     console.log("punchin clicked")
     try {
-      let api = await fetch(`${process.env.REACT_APP_API_URL}/api/punch`, {
+      let api = await fetch(`${import.meta.env.VITE_API_URL}/api/punch`, {
         method: shift?.message === "Punch Out" ? 'PUT' : 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: shift?.message === "Punch In" ? JSON.stringify({

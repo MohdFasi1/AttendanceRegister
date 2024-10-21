@@ -6,7 +6,7 @@ const Announcements = ({ loginData }) => {
   const [message,setMessage] = useState("");
   const [open, setOpen] = useState(false);
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/api/announcements`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/announcements`)
       .then(res => res.json())
       .then(data => {
         setAnnouncements(data);
@@ -24,7 +24,7 @@ const Announcements = ({ loginData }) => {
   const postAnnouncement = async(e) => {
     try {
       e.preventDefault();
-      const a = await fetch(`${process.env.REACT_APP_API_URL}/api/announcement`, {
+      const a = await fetch(`${import.meta.env.VITE_API_URL}/api/announcement`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',

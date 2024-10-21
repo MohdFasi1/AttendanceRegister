@@ -12,7 +12,7 @@ const EmployeeDetails = ({ loginData }) => {
   const [message,setMessage] = useState({})
   const navigate = useNavigate();
   const getData = async () => {
-    let a = await fetch(`${process.env.REACT_APP_API_URL}/api/employee-details?id=${id}`)
+    let a = await fetch(`${import.meta.env.VITE_API_URL}/api/employee-details?id=${id}`)
     let res = await a.json();
     console.log(res)
     setData(res)
@@ -22,7 +22,7 @@ const EmployeeDetails = ({ loginData }) => {
   }, [message])
 
   const handleDelete = async()=>{
-    let a = await fetch(`${process.env.REACT_APP_API_URL}/api/delete-employee/${data._id}`,{
+    let a = await fetch(`${import.meta.env.VITE_API_URL}/api/delete-employee/${data._id}`,{
       method: 'DELETE',
   })
   let res = await a.json();

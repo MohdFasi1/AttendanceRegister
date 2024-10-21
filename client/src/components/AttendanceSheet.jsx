@@ -10,7 +10,7 @@ const AttendanceSheet = ({loginData}) => {
     },[])
     const getDataSheet = async () => {
         try {
-            let api = await fetch(`${process.env.REACT_APP_API_URL}/api/attendance?id=${loginData._id}&month=${month}`);
+            let api = await fetch(`${import.meta.env.VITE_API_URL}/api/attendance?id=${loginData._id}&month=${month}`);
             let res = await api.json();
             setDataSheet(res.data);
             console.log(dataSheet)
