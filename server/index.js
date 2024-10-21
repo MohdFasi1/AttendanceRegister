@@ -30,7 +30,10 @@ app.use(cors({
 ));
 connectDB()
 
-
+io.on('connection', (socket) => {
+  console.log('a user connected');
+  // Handle socket events here
+});
 
 // runs every day at 23:59 (11:59 PM) and marks absent to remaining employees
 cron.schedule('59 23 * * *', async () => {
