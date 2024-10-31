@@ -180,7 +180,7 @@ app.get('/api/today', async (req, res) => {
     const date = new Date();
     date.setHours(0, 0, 0, 0);
     const yesterday = new Date(date);
-    yesterday.setDate(today.getDate() - 1);
+    yesterday.setDate(date.getDate() - 1);
     let today = date.toLocaleString()
 
     const data = await Emp.findOne({
