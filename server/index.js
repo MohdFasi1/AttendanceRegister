@@ -127,7 +127,13 @@ app.post('/api/punch', async (req, res) => {
       status: "Ongoing"
     })
     data.save();
-    let temp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }).toUpperCase()
+    let temp = new Date().toLocaleTimeString('en-US', {
+      timeZone: 'Asia/Kolkata', // Replace with your desired timezone
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    }).toUpperCase();
+    
     let notify = new Notification({
       id: "notify-admin",
       message : `${name} checked in at ${temp}`
@@ -156,7 +162,12 @@ app.put('/api/punch', async (req, res) => {
       notes: a.notes,
       status: status,
     })
-    let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }).toUpperCase()
+    let time = new Date().toLocaleTimeString('en-US', {
+      timeZone: 'Asia/Kolkata', // Replace with your desired timezone
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    }).toUpperCase();
     let notify = new Notification({
       id: "notify-admin",
       message : `${a.name} checked out at ${time}`
