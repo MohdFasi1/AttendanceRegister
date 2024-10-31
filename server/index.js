@@ -178,14 +178,16 @@ app.get('/api/today', async (req, res) => {
 
     // Get today's date at midnight
     const date = new Date();
-    date.setHours(0, 0, 0, 0);// Reset time to midnight (00:00:00)
+    date.setHours(0, 0, 0, 0);
+    const yesterday = new Date(date);
+    yesterday.setDate(today.getDate() - 1);
     let today = date.toLocaleString()
-    // Query for the employee's current shift (open shift where time_out is not set)
+
     const data = await Emp.findOne({
       id: id,
       $or: [
-        { date: { $gte: today } },  // Check if the date is today or later
-        { time_out: null, date: { $lt: today } }  // Check for open shifts from previous days
+        { date: { $gte: today } },
+        { time_out: null, date: { $lt: yesterday.toLocaleString() } }  // Check for open shifts from previous days
       ]
     });
     const markedShift = await Emp.findOne({
