@@ -29,7 +29,9 @@ app.use(cors({
 ));
 connectDB()
 
-
+app.get("/ping",(req,res)=>{
+  return res.status(200).json({ message: 'ping..' });
+})
 // runs every day at 23:59 (11:59 PM) and marks absent to remaining employees
 cron.schedule('59 23 * * *', async () => {
   try {
