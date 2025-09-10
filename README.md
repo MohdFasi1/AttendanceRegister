@@ -32,14 +32,14 @@ And server
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/employee-attendance-register.git
+git clone https://github.com/MohdFasi1/AttendanceRegister.git
 
 ```
 
 Navigate to the project directory:
 
 ```bash
-cd employee-attendance-register
+cd AttendanceRegister
 
 ```
 
